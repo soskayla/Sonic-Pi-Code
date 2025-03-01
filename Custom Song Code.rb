@@ -1,6 +1,8 @@
 use_bpm 160
 use_synth :piano
 
+#pink + white
+
 bird = "C:/Users/makayla_washington/Downloads/birds.wav"
 
 define :chords do
@@ -23,7 +25,7 @@ define :chords do
 end
 
 live_loop :birds do
-  sample bird, amp: 0.2
+  sample bird, amp: 0.1
   sleep 16
 end
 
@@ -78,10 +80,3 @@ live_loop :ending do
   sleep 4
   stop
 end
-
-
-
-
-
-
-
