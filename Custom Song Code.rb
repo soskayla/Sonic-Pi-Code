@@ -58,6 +58,8 @@ live_loop :melody do
   sleep 2
 end
 
+sleep 4
+
 live_loop :drums do
   sample :drum_cymbal_soft, amp: 0.1
   sleep 1
