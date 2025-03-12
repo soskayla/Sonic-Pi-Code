@@ -3,9 +3,6 @@ use_synth :piano
 
 #pink + white
 
-
-
-
 define :changeNotesnSleep do |note|
   play note
 end
