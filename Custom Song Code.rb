@@ -3,16 +3,23 @@ use_synth :piano
 
 #pink + white
 
+
+
+
+define :changeNotesnSleep do |note|
+  play note
+end
+
 bird = "C:/Users/makayla_washington/Downloads/birds.wav"
 
 define :chords do
-  play :e4, sustain: 4, amp: 0.09, sustain: 2
+  play :e4, sustain: 4, amp: 0.09, sustain: 4
   sleep 1
-  play :e4, sustain: 4, amp: 0.09, sustain: 2
+  play :e4, sustain: 4, amp: 0.09, sustain: 4
   sleep 1
-  play :e4, sustain: 4, amp: 0.09, sustain: 2
+  play :e4, sustain: 4, amp: 0.09, sustain: 4
   sleep 1
-  play :e4, sustain: 4, amp: 0.09, sustain: 2
+  play :e4, sustain: 4, amp: 0.09, sustain: 4
   sleep 1
   
 end
@@ -31,7 +38,7 @@ end
 sleep 4
 
 live_loop :melody do
-  play :e4, sustain: 1, amp: 0.1
+  play :e4, sustain: 1, amp: 0.2
   sleep 0.5
   play :g4, sustain: 1, amp: 0.2
   sleep 0.5
@@ -51,6 +58,7 @@ live_loop :melody do
   sleep 2
 end
 
+
 sleep 4
 
 live_loop :drums do
@@ -66,13 +74,6 @@ end
 
 sleep 32
 
-live_loop :ending do
-  stop
-  sleep 2
-  play :b3, sustain: 4, amp: 0.3
-  play :e4, sustain: 4, amp: 0.3
-  play :g4, sustain: 4, amp: 0.3
-  sleep 4
-  stop
-end
+stop
+
 
