@@ -1,6 +1,6 @@
 use_bpm 125
 
-#Pink+White
+#Pink+White Remix
 
 birds = "C:/Users/makayla_washington/Downloads/birds.wav"
 
@@ -119,6 +119,111 @@ live_loop :fade_out do
   
   
   set :stop_all, true
+end
+
+#Good days Remix is here
+
+use_bpm 115
+
+# Sheet music: https://www.musicnotes.com/sheetmusic/mtd.asp?ppn=MN0232450
+# Song sample: https://youtu.be/EOXixip7iPg?si=uKJv10s6aS4V8TUN
+
+bass1 = "C:/Users/makayla_washington/Documents/Audacity/sample 1.wav"
+
+define :intro do
+  use_synth :hollow
+  4.times do
+    play_chord [:c4, :e4, :g4], amp: 2, release: 4,rate: 2
+    sleep 2
+  end
+end
+
+define :three_notes do |note1, note2, note3|
+  use_synth :piano
+  play note1, amp: 0.4, sustain: 0.5
+  sleep 0.5
+  play note2, amp: 0.4, sustain: 0.25
+  sleep 0.25
+  play note3, amp: 0.4, sustain: 0.25
+  sleep 0.25
+end
+
+define :fournotes do |note_1, note_2, note_3, note_4|
+  use_synth :piano
+  sleep 0.25
+  play note_1, amp: 0.4, sustain: 0.25
+  sleep 0.25
+  play note_2, amp: 0.4, sustain: 0.25
+  sleep 0.25
+  play note_3, amp: 0.4, sustain: 0.25
+  sleep 0.25
+  play note_4, amp: 0.4, sustain: 0.25
+end
+
+define :background_drums do
+  drum_sounds = [:bd_haus, :sn_dub]
+  
+  live_loop :drums do
+    drum_sounds.each do |sound|
+      sample sound, amp: 0.5
+      sleep 1
+    end
+  end
+end
+
+
+live_loop :intro do
+  intro
+  stop
+end
+
+sleep 8
+
+live_loop :melody do
+  with_fx :reverb, mix: 0.4 do
+    three_notes :f4,:d4,:f4
+    fournotes :c4,:d4,:f4,:c4
+    three_notes :g4,:d4,:g4
+    fournotes :c4,:d4,:g4,:c4
+    three_notes :b4,:c4,:b4
+    fournotes :d4,:g4,:b4,:d4
+    three_notes :c4,:f4,:c4
+    fournotes :d4,:f4,:c4,:d4
+    three_notes :g4,:e4,:g4
+    fournotes :c4,:e4,:g4,:c4
+    three_notes :d5,:g4,:d5
+    fournotes :e4,:g4,:d5,:e4
+    2.times do
+      three_notes :d5,:g4,:d5
+      fournotes :e4,:g4,:d5,:e4
+    end
+  end
+end
+
+sleep 16
+
+live_loop :bass do
+  sample bass1, rate: 1.5, amp: 0.05
+  sleep 0.25
+end
+
+background_drums
+
+sleep 60
+
+live_loop :fade_out do
+  8.times do |i|
+    set_volume! 1.0 - (i * 0.1)
+    sleep 2
+  end
+  set_volume! 0
+  stop
+end
+
+sleep 50
+
+live_loop :stop_all do
+  stop
 end
 
 
